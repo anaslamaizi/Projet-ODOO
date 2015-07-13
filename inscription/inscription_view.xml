@@ -1,0 +1,527 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <menuitem name="Gestion d'nscription" id="inscription_parent_menu"/>
+
+        <!-- Institute Management -->
+        <menuitem name="Gestion des universitie" parent="inscription_parent_menu" id="inscription_management_side_menu"/>
+
+        <!-- Establishment -->
+        <record model="ir.ui.view" id="inscription_establishment_form_view">
+            <field name="name">inscription.establishment.form.view</field>
+            <field name="model">inscription.establishment</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Establishment Form" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="logo" widget='image' class="oe_avatar oe_left"/>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="address"/>
+                        </group>
+                        <notebook>
+                            <page string="Universitys">
+                                <field name="universitys" widget="one2many_list"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inscription_establishment_tree_view">
+            <field name="name">inscription.establishment.tree.view</field>
+            <field name="model">inscription.establishment</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Establishment List">
+                    <field name="name"/>
+                    <field name="universitys" widget="one2many"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inscription_establishment">
+            <field name="name">Gestion d'etablissement</field>
+            <field name="res_model">inscription.establishment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_inscription_establishment_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="inscription_establishment_form_view"/>
+            <field name="act_window_id" ref="action_inscription_establishment"/>
+        </record>
+        
+        <record id="action_inscription_establishment_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="inscription_establishment_tree_view"/>
+            <field name="act_window_id" ref="action_inscription_establishment"/>
+        </record>
+        
+        <menuitem name="Establishment" parent="inscription_management_side_menu" id="inscription_establishment_menu"
+                  action="action_inscription_establishment"/>
+
+        <!-- University -->
+        <record model="ir.ui.view" id="inscription_university_form_view">
+            <field name="name">inscription.university.form.view</field>
+            <field name="model">inscription.university</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="University Form" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="logo" widget='image' class="oe_avatar oe_left"/>
+                            <field name="name"/>
+                            <field name="abbreviation"/>
+                            <field name="description"/>
+                            <field name="website"/>
+                            <field name="address"/>
+                            <field name="establishment"/>
+                        </group>
+                        <notebook>
+                            <page string="Degrees">
+                                <field name="degrees" widget="one2many_list"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inscription_university_tree_view">
+            <field name="name">inscription.university.tree.view</field>
+            <field name="model">inscription.university</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="University List">
+                    <field name="abbreviation"/>
+                    <field name="name"/>
+                    <field name="establishment"/>
+                    <field name="website"/>
+                    <field name="degrees" widget="one2many_list"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inscription_university">
+            <field name="name">Gestion des universites</field>
+            <field name="res_model">inscription.university</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_inscription_university_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="inscription_university_form_view"/>
+            <field name="act_window_id" ref="action_inscription_university"/>
+        </record>
+        
+        <record id="action_inscription_university_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="inscription_university_tree_view"/>
+            <field name="act_window_id" ref="action_inscription_university"/>
+        </record>
+
+        <menuitem name="Universite" parent="inscription_management_side_menu" id="inscription_university_menu"
+                  action="action_inscription_university"/>
+
+        <!-- Degree -->
+        <record model="ir.ui.view" id="inscription_degree_form_view">
+            <field name="name">inscription.degree.form.view</field>
+            <field name="model">inscription.degree</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <form string="Degree Form" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="university"/>
+                            <field name="specialities" widget="one2many_list"/>
+                        </group>
+                        <notebook>
+                            <page string="Specialities">
+                                <field name="specialities" widget="one2many_list"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inscription_degree_tree_view">
+            <field name="name">inscription.degree.tree.view</field>
+            <field name="model">inscription.degree</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Degree List">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="university"/>
+                    <field name="specialities" widget="one2many_list"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inscription_degree">
+            <field name="name">Gestion de diplome</field>
+            <field name="res_model">inscription.degree</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_inscription_degree_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="inscription_degree_form_view"/>
+            <field name="act_window_id" ref="action_inscription_degree"/>
+        </record>
+        
+        <record id="action_inscription_degree_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="inscription_degree_tree_view"/>
+            <field name="act_window_id" ref="action_inscription_degree"/>
+        </record>
+
+        <menuitem name="Diplome" parent="inscription_management_side_menu" id="inscription_degree_menu"
+                  action="action_inscription_degree"/>
+
+        <!-- Speciality -->
+        <record model="ir.ui.view" id="inscription_speciality_form_view">
+            <field name="name">inscription.speciality.form.view</field>
+            <field name="model">inscription.speciality</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Speciality Form" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="degree"/>
+                        </group>
+                        <notebook>
+                            <page string="Reformes">
+                                <field name="reformes" widget="one2many_list"/>
+                            </page>
+                            <page string="Inscriptions">
+                                <field name="inscriptions" widget="one2many_list"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inscription_speciality_tree_view">
+            <field name="name">inscription.speciality.tree.view</field>
+            <field name="model">inscription.speciality</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Speciality List">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="degree"/>
+                    <field name="reformes" widget="one2many_list"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inscription_speciality">
+         <field name="name">Speciality Management</field>
+            <field name="res_model">inscription.speciality</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_inscription_speciality_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="inscription_speciality_form_view"/>
+            <field name="act_window_id" ref="action_inscription_speciality"/>
+        </record>
+        
+        <record id="action_inscription_speciality_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="inscription_speciality_tree_view"/>
+            <field name="act_window_id" ref="action_inscription_speciality"/>
+        </record>
+
+        <menuitem name="Speciality" parent="inscription_management_side_menu" id="inscription_speciality_menu"
+                  action="action_inscription_speciality"/>
+
+        <!-- Institute Management -->
+        <menuitem name="Reforme Management" parent="inscription_parent_menu" id="inscription_reforme_side_menu"/>
+
+        <!-- Reforme -->
+        <record model="ir.ui.view" id="inscription_reforme_form_view">
+            <field name="name">inscription.reforme.form.view</field>
+            <field name="model">inscription.reforme</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Reforme Form" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="apply_date"/>
+                            <field name="confirmation"/>
+                            <field name="application"/>
+                            <field name="speciality"/>
+                        </group>
+                        <notebook>
+                            <page string="Modules">
+                                <field name="modules" widget="many2many_list"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inscription_reforme_tree_view">
+            <field name="name">inscription.reforme.tree.view</field>
+            <field name="model">inscription.reforme</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Reforme List">
+                    <field name="name"/>
+                    <field name="apply_date"/>
+                    <field name="confirmation"/>
+                    <field name="application"/>
+                    <field name="speciality"/>
+                    <field name="modules" widget="many2many_list"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inscription_reforme">
+            <field name="name">Gestion des Reparation/maintenance </field>
+            <field name="res_model">inscription.reforme</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_inscription_reforme_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="inscription_reforme_form_view"/>
+            <field name="act_window_id" ref="action_inscription_reforme"/>
+        </record>
+        
+        <record id="action_inscription_reforme_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="inscription_reforme_tree_view"/>
+            <field name="act_window_id" ref="action_inscription_reforme"/>
+        </record>
+
+        <menuitem name="Reparation/maintenance" parent="inscription_reforme_side_menu" id="inscription_reforme_menu"
+                  action="action_inscription_reforme"/>
+
+        <!-- Module -->
+        <record model="ir.ui.view" id="inscription_module_form_view">
+            <field name="name">inscription.module.form.view</field>
+            <field name="model">inscription.module</field>
+                <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Module Form" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="id"/>
+                            <field name="designation"/>
+                            <field name="coefficient"/>
+                            <field name="hours_number"/>
+                            <field name="description"/>
+                            <field name="conformity"/>
+                        </group>
+                        <notebook>
+                            <page string="Reformes">
+                                <field name="reformes" widget="many2many_list"/>
+                            </page>
+                            <page string="Teaching Units">
+                                <field name="teaching_units" widget="many2many_list"/>
+                            </page>
+                            <page string="Credits">
+                                <field name="credits" widget="many2many_list"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inscription_module_tree_view">
+            <field name="name">inscription.module.tree.view</field>
+            <field name="model">inscription.module</field>
+                <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Module List">
+                    <field name="id"/>
+                    <field name="designation"/>
+                    <field name="coefficient"/>
+                    <field name="hours_number"/>
+                    <field name="description"/>
+                    <field name="teaching_units" widget="many2many_list"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inscription_module">
+            <field name="name">Gestion du modules</field>
+            <field name="res_model">inscription.module</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_inscription_module_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="inscription_module_form_view"/>
+            <field name="act_window_id" ref="action_inscription_module"/>
+        </record>
+        
+        <record id="action_inscription_module_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="inscription_module_tree_view"/>
+            <field name="act_window_id" ref="action_inscription_module"/>
+        </record>
+
+        <menuitem name="Module" parent="inscription_reforme_side_menu" id="inscription_module_menu"
+                  action="action_inscription_module"/>
+
+        <!-- Teaching Unit -->
+        <record model="ir.ui.view" id="inscription_teaching_unit_form_view">
+            <field name="name">inscription.teaching_unit.form.view</field>
+            <field name="model">inscription.teaching_unit</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Teaching Unit Form" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="designation"/>
+                            <field name="coefficient"/>
+                            <field name="hours_number"/>
+                            <field name="description"/>
+                        </group>
+                        <notebook>
+                            <page string="Modules">
+                                <field name="modules" widget="many2many_list"/>
+                            </page>
+                            <page string="Exams">
+                                <field name="exams" widget="many2many_list"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inscription_teaching_unit_tree_view">
+            <field name="name">inscription.teaching_unit.tree.view</field>
+            <field name="model">inscription.teaching_unit</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Teaching Unit List">
+                    <field name="designation"/>
+                    <field name="coefficient"/>
+                    <field name="hours_number"/>
+                    <field name="modules" widget="many2many_list"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inscription_teaching_unit">
+            <field name="name">Gestion des profs</field>
+            <field name="res_model">inscription.teaching_unit</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_inscription_teaching_unit_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="inscription_teaching_unit_form_view"/>
+            <field name="act_window_id" ref="action_inscription_teaching_unit"/>
+        </record>
+        
+        <record id="action_inscription_teaching_unit_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="inscription_teaching_unit_tree_view"/>
+            <field name="act_window_id" ref="action_inscription_teaching_unit"/>
+        </record>
+
+        <menuitem name="id profs" parent="inscription_reforme_side_menu" id="inscription_teaching_unit_menu"
+                  action="action_inscription_teaching_unit"/>
+
+        <!-- Inscription Management -->
+        <menuitem name="Gestion d'inscriptions" parent="inscription_parent_menu"
+                  id="inscription_inscription_side_menu"/>
+
+        <!-- Inscription -->
+        <record model="ir.ui.view" id="inscription_inscription_form_view">
+            <field name="name">inscription.inscription.form.view</field>
+            <field name="model">inscription.inscription</field>
+                <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Inscription Form" version="7.0">
+                    <group>
+                        <field name="student"/>
+                        <field name="speciality"/>
+                        <field name="study_year"/>
+                        <field name="confirmation"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inscription_inscription_tree_view">
+            <field name="name">inscription.inscription.tree.view</field>
+            <field name="model">inscription.inscription</field>
+                <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Inscription List">
+                    <field name="student"/>
+                    <field name="speciality"/>
+                    <field name="study_year"/>
+                    <field name="confirmation"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_inscription_inscription">
+            <field name="name">Gestion d'inscription</field>
+            <field name="res_model">inscription.inscription</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_inscription_inscription_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="inscription_inscription_form_view"/>
+            <field name="act_window_id" ref="action_inscription_inscription"/>
+        </record>
+        
+        <record id="action_inscription_teaching_unit_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="inscription_inscription_tree_view"/>
+            <field name="act_window_id" ref="action_inscription_inscription"/>
+        </record>
+
+        <menuitem name="Inscription" parent="inscription_inscription_side_menu" id="inscription_inscription_menu"
+                  action="action_inscription_inscription"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- menu item -->
+        <menuitem name="Gestion des examens" id="notes_parent_menu"/>
+
+        <!-- Exam Management -->
+        <menuitem name="Gestion des examens" parent="notes_parent_menu" id="exam_side_menu"/>
+
+        <!-- Exam -->
+        <record model="ir.ui.view" id="notes_exam_form_view">
+            <field name="name">notes.exam.form.view</field>
+            <field name="model">notes.exam</field>
+                <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Exam Form" version="7.0">
+                    <sheet>
+                        <field name="document"/>
+                        <field name="teaching_unit"/>
+                        <field name="exam_category"/>
+                        <field name="date"/>
+                        <field name="session"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="notes_exam_tree_view">
+            <field name="name">notes.exam.tree.view</field>
+            <field name="model">notes.exam</field>
+                <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Exam List">
+                    <field name="id"/>
+                    <field name="teaching_unit"/>
+                    <field name="exam_category"/>
+                    <field name="date"/>
+                    <field name="session"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_notes_exam">
+            <field name="name">Exam Management</field>
+            <field name="res_model">notes.exam</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_notes_exam_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="notes_exam_form_view"/>
+            <field name="act_window_id" ref="action_notes_exam"/>
+        </record>
+        
+        <record id="action_notes_exam_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="notes_exam_tree_view"/>
+            <field name="act_window_id" ref="action_notes_exam"/>
+        </record>
+
+        <menuitem name="Examen" parent="exam_side_menu" id="notes_exam_menu" action="action_notes_exam"/>
+
+        <!-- Exam Category-->
+        <record model="ir.ui.view" id="notes_exam_category_form_view">
+            <field name="name">notes.exam_category.form.view</field>
+            <field name="model">notes.exam_category</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Exam Category Form" version="7.0">
+                    <sheet>
+                        <field name="designation"/>
+                        <field name="exams" widget="many2many_list"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="notes_exam_category_tree_view">
+            <field name="name">notes.exam_category.tree.view</field>
+            <field name="model">notes.exam_category</field>
+                <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Exam Category List">
+                    <field name="designation"/>
+                    <field name="exams" widget="many2many_list"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_notes_exam_category">
+            <field name="name">Exam Category Management</field>
+            <field name="res_model">notes.exam_category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_notes_exam_category_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="notes_exam_category_form_view"/>
+            <field name="act_window_id" ref="action_notes_exam_category"/>
+        </record>
+        
+        <record id="action_notes_exam_category_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="notes_exam_category_tree_view"/>
+            <field name="act_window_id" ref="action_notes_exam_category"/>
+        </record>
+
+        <menuitem name="Categorie des Examens" parent="exam_side_menu" id="notes_exam_category_menu"
+                  action="action_notes_exam_category"/>
+
+        <!-- Student Evaluation -->
+        <menuitem name="Evaluation d'etude " parent="notes_parent_menu" id="evaluation_side_menu"/>
+
+        <!-- Evaluation -->
+        <record model="ir.ui.view" id="notes_evaluation_form_view">
+            <field name="name">notes.evaluation.form.view</field>
+            <field name="model">notes.evaluation</field>
+                <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Exam Form" version="7.0">
+                    <sheet>
+                        <field name="exam"/>
+                        <field name="student"/>
+                        <field name="note"/>
+                        <field name="session"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="notes_evaluation_tree_view">
+            <field name="name">notes.evaluation.tree.view</field>
+            <field name="model">notes.evaluation</field>
+                <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Exam List">
+                    <field name="exam"/>
+                    <field name="student"/>
+                    <field name="note"/>
+                    <field name="session"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_notes_evaluation">
+            <field name="name">Student Evaluation</field>
+            <field name="res_model">notes.evaluation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_notes_evaluation_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="notes_evaluation_form_view"/>
+            <field name="act_window_id" ref="action_notes_evaluation"/>
+        </record>
+        
+        <record id="action_notes_evaluation_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="notes_evaluation_tree_view"/>
+            <field name="act_window_id" ref="action_notes_evaluation"/>
+        </record>
+
+        <menuitem name="Evaluation" parent="evaluation_side_menu" id="notes_evaluation_menu"
+                  action="action_notes_evaluation"/>
+
+        <!-- Student Credit-->
+        <record model="ir.ui.view" id="notes_credit_form_view">
+            <field name="name">notes.credit.form.view</field>
+            <field name="model">notes.credit</field>
+                <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Student Credit Form" version="7.0">
+                    <sheet>
+                        <field name="student"/>
+                        <field name="module"/>
+                        <field name="credit"/>
+                        <field name="status"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="notes_credit_tree_view">
+            <field name="name">notes.credit.tree.view</field>
+            <field name="model">notes.credit</field>
+                <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Student Credit List">
+                    <field name="student"/>
+                    <field name="module"/>
+                    <field name="credit"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_notes_credit">
+            <field name="name">Student Evaluation</field>
+            <field name="res_model">notes.credit</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_notes_credit_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="notes_credit_form_view"/>
+            <field name="act_window_id" ref="action_notes_credit"/>
+        </record>
+        
+        <record id="action_notes_credit_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="notes_credit_tree_view"/>
+            <field name="act_window_id" ref="action_notes_credit"/>
+        </record>
+
+        <menuitem name="Controle / TP" parent="evaluation_side_menu" id="notes_credit_menu"
+                  action="action_notes_credit"/>
+
+
+    </data>
+</openerp>

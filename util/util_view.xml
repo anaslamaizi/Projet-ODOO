@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        
+        <!-- menu item -->
+        <menuitem name="Gestion des pays" id="util_country_parent_menu"/>
+        <menuitem name="Pays" parent="util_country_parent_menu" id="util_country_side_menu"/>
+        <record model="ir.ui.view" id="util_country_form_view">
+            <field name="name">util.country.form.view</field>
+            <field name="model">util.country</field>
+            <field name="arch" type="xml">
+                <form string="Country Form" version="7.0">
+                    <sheet>
+                        <field name="country_flag"/>
+                        <field name="name"/>
+                        <field name="towns" widget="one2many_list"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="util_country_tree_view">
+            <field name="name">util.country.tree.view</field>
+            <field name="model">util.country</field>
+            <field name="arch" type="xml">
+                <tree string="Country List">
+                    <field name="name"/>
+                    <field name="towns" widget="one2many_list"/>
+                </tree>
+            </field>
+        </record>
+
+         <record model="ir.actions.act_window" id="action_util_country">
+             <field name="name">Country Management</field>
+             <field name="res_model">util.country</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">tree,form</field>
+         </record>
+
+         <menuitem name="Pays" parent="util_country_side_menu" id="util_country_menu" action="action_util_country" />
+
+        <!-- Town -->
+        <record model="ir.ui.view" id="util_town_form_view">
+            <field name="name">util.town.form.view</field>
+            <field name="model">util.town</field>
+            <field name="arch" type="xml">
+                <form string="Town Form" version="7.0">
+                    <sheet>
+                        <field name="name"/>
+                        <field name="country"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="util_town_tree_view">
+            <field name="name">util.town.tree.view</field>
+            <field name="model">util.town</field>
+            <field name="arch" type="xml">
+                <tree string="Town List">
+                    <field name="name"/>
+                    <field name="country"/>
+                </tree>
+            </field>
+        </record>
+
+         <record model="ir.actions.act_window" id="action_util_town">
+             <field name="name">Town Management</field>
+             <field name="res_model">util.town</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">tree,form</field>
+         </record>
+
+         <menuitem name="Ville" parent="util_country_side_menu" id="util_town_menu" action="action_util_town" />
+
+    </data>
+</openerp>
