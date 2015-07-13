@@ -62,8 +62,8 @@ class user_student(osv.osv):
     'inscription_number': fields.char('Numero dinscription', size=100, required=True),
     'parent' : fields.many2one('user.parent', 'Parent/Chef de departements'),
     'inscriptions' : fields.one2many('inscription.inscription', 'student', 'Inscriptions'),
-    'credits': fields.one2many('notes.credit', 'Etudiant', 'Credit'),
-    'evaluation': fields.one2many('notes.evaluation', 'Etudiant', 'Evaluation'),
+    'credits': fields.one2many('notes.credit', 'student', 'Credit'),
+    'evaluation': fields.one2many('notes.evaluation', 'student', 'Evaluation'),
     }
 user_student()
 

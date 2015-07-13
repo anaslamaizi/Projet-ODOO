@@ -137,7 +137,7 @@
                 <field name='last_name' position='after'>
                     <field name="parent"/>
                 </field>
-                <notebook position="inside">
+                <!--<notebook position="inside">
                     <page string="Inscriptions">
                         <field name="inscriptions" widget="one2many_list"/>
                     </page>
@@ -147,7 +147,7 @@
                     <page string="Evaluation/Notes">
                         <field name="evaluation" widget="one2many_list"/>
                     </page>
-                </notebook>
+                </notebook>-->
             </field>
         </record>
 

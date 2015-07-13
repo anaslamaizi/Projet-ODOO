@@ -17,6 +17,7 @@ contien:
 Version : 0.1
 
 Author : Anas lamaizi""",
+
 'author': 'Anas lamaizi',
 'depends': ['mail'],
 'data': [

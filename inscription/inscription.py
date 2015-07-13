@@ -14,7 +14,7 @@ class inscription_establishment(osv.osv):
     'name': fields.char('Nom', size=100, required=True),
     'description': fields.text('Description'),
     'address': fields.text('Addresse'),
-    'universitys' : fields.one2many('inscription.university', 'Etablissement', 'Universite'),
+    'universitys' : fields.one2many('inscription.university', 'establishment', 'Universite'),
     }
     
     def name_get(self, cr, uid, ids, context={}):
@@ -41,7 +41,7 @@ class inscription_university(osv.osv):
     'website': fields.char('site web', size=100),
     'address': fields.text('Addresse'),
     'establishment' : fields.many2one('inscription.establishment', 'Etablissement'),
-    'degrees' : fields.one2many('inscription.degree', 'universite', 'Diplome'),
+    'degrees' : fields.one2many('inscription.degree', 'university', 'Diplome'),
     }
     
     def name_get(self, cr, uid, ids, context={}):
@@ -63,7 +63,7 @@ class inscription_degree(osv.osv):
     'name': fields.char('Name', size=100, required=True),
     'description': fields.text('Description'),
     'university' : fields.many2one('inscription.university', 'Universite'),
-    'specialities' : fields.one2many('inscription.speciality', 'Diplome', 'Specialities'),
+    'specialities' : fields.one2many('inscription.speciality', 'degree', 'Specialities'),
     }
     
     def name_get(self, cr, uid, ids, context={}):

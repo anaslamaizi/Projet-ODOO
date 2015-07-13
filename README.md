@@ -14,4 +14,4 @@ This application depend in the following native modules:
 
 Version : 0.1
 
-Author : Mohamed Chams Eddin Mouedhen, Ghaida Yaakoubi, Sabrin Ghribi, Zied Sallami
+Author : Anas Lamaizi, Mohamed Chams Eddin Mouedhen
