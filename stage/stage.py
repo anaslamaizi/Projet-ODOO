@@ -41,8 +41,8 @@ class  stage_stage(osv.osv):
     _description = 'stage_stage'
     _columns = {
     'sujet': fields.char('sujet', size=100, required=True),
-	'date_debut': fields.date('Date_Debut', required=True),
-	'date_fin': fields.date('Date_Fin', required=True),
+	'date_debut': fields.date('Date Début', required=True),
+	'date_fin': fields.date('Date Fin', required=True),
     }
 
 stage_stage()

@@ -14,7 +14,7 @@ class inscription_establishment(osv.osv):
     'name': fields.char('Nom', size=100, required=True),
     'description': fields.text('Description'),
     'address': fields.text('Addresse'),
-    'universitys' : fields.one2many('inscription.university', 'establishment', 'Universite'),
+    'universitys' : fields.one2many('inscription.university', 'establishment', 'Universités'),
     }
     
     def name_get(self, cr, uid, ids, context={}):
@@ -35,13 +35,13 @@ class inscription_university(osv.osv):
     _table = 'inscription_university'
     _columns = {
     'logo': fields.binary('Logo'),
-    'abbreviation': fields.char('Abbreviation', size=10, required=True),
+    'abbreviation': fields.char('Abbréviation', size=10, required=True),
     'name': fields.char('Nom', size=100, required=True),
     'description': fields.text('Description'),
-    'website': fields.char('site web', size=100),
+    'website': fields.char('Site web', size=100),
     'address': fields.text('Addresse'),
     'establishment' : fields.many2one('inscription.establishment', 'Etablissement'),
-    'degrees' : fields.one2many('inscription.degree', 'university', 'Diplome'),
+    'degrees' : fields.one2many('inscription.degree', 'university', 'Diplôme'),
     }
     
     def name_get(self, cr, uid, ids, context={}):
@@ -62,8 +62,8 @@ class inscription_degree(osv.osv):
     _columns = {
     'name': fields.char('Name', size=100, required=True),
     'description': fields.text('Description'),
-    'university' : fields.many2one('inscription.university', 'Universite'),
-    'specialities' : fields.one2many('inscription.speciality', 'degree', 'Specialities'),
+    'university' : fields.many2one('inscription.university', 'Université'),
+    'specialities' : fields.one2many('inscription.speciality', 'degree', 'Specialitiés'),
     }
     
     def name_get(self, cr, uid, ids, context={}):
@@ -84,7 +84,7 @@ class inscription_speciality(osv.osv):
     'name': fields.char('Name', size=100, required=True),
     'description': fields.text('Description'),
     'degree' : fields.many2one('inscription.degree', 'Degree'),
-    'reformes' : fields.one2many('inscription.reforme', 'speciality', 'Reformes'),
+    'reformes' : fields.one2many('inscription.reforme', 'speciality', 'Réformes'),
     'inscriptions' : fields.one2many('inscription.inscription', 'speciality', 'Inscriptions'),
     }
     
@@ -122,17 +122,17 @@ class inscription_module(osv.osv):
     _name = 'inscription.module'
     _description = 'Module class'
     _columns = {
-    'id': fields.char('Identifier', size=10, required=True),
-    'designation': fields.char('Designation', size=100, required=True),
+    'id': fields.char('Identifiant', size=10, required=True),
+    'designation': fields.char('Désignation', size=100, required=True),
     'coefficient': fields.float('Coefficient', required=True),
-    'hours_number': fields.integer('Nombre d\'heurs'),
+    'hours_number': fields.integer('Nombre d\'heures'),
     'description': fields.text('Description'),
     'conformity' : fields.many2one('inscription.module', 'Conforme'),
     'reformes': fields.many2many('inscription.reforme', 'inscription_module_reforme_rel', 
-                        'module_id', 'reforme_id', string="Reformes"),
+                        'module_id', 'reforme_id', string="Réformes"),
     'teaching_units': fields.many2many('inscription.teaching_unit', 'inscription_module_teaching_unit_rel', 
                         'module_id', 'teaching_unit_id', string="Teaching Units"),
-    'credits': fields.one2many('notes.credit', 'module', 'Credits'),
+    'credits': fields.one2many('notes.credit', 'module', 'Crédits'),
     }
 
 inscription_module()

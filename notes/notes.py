@@ -28,8 +28,8 @@ class notes_exam(osv.osv):
     'document': fields.binary('Document examen'),
     'date': fields.date('Date'),
     'session': fields.selection((('P', 'premiere session'), ('D', 'deuxieme session')), 'Session', required=True),
-    'teaching_unit': fields.many2one('inscription.teaching_unit', 'Nom de Prof'),
-    'exam_category': fields.many2one('notes.exam_category', 'categorie'),
+    'teaching_unit': fields.many2one('inscription.teaching_unit', 'Matière'),
+    'exam_category': fields.many2one('notes.exam_category', 'Catégorie'),
     }
 
 

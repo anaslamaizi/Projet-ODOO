@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from openerp.osv import osv
 from openerp.osv import fields
 import time
@@ -10,14 +11,14 @@ class user_person(osv.osv):
     _columns = {
     'picture': fields.binary("Photo"),
     'cin_passport': fields.char('CIN/Apogee', size=100, required=True),
-    'first_name': fields.char('Prenom', size=100, required=True),
+    'first_name': fields.char('Prénom', size=100, required=True),
     'last_name': fields.char('Nom', size=100, required=True),
     'address': fields.text('Addresse'),
     'town': fields.many2one('util.town', 'Ville', required=True),
-    'email': fields.char('Email Adress', size=100),
-    'phone': fields.integer('Numero de telephone'),
+    'email': fields.char('Adresse Email', size=100),
+    'phone': fields.integer('Numero de téléphone'),
     'birthday': fields.date('date de naissance'),
-    'user_groups' : fields.many2one('res.groups', 'Groupes d\'utilisateurs associes'),
+    'user_groups' : fields.many2one('res.groups', 'Groupes d\'utilisateurs associés'),
     }
   
     def name_get(self, cr, uid, ids, context={}):
@@ -48,7 +49,7 @@ class user_teacher(osv.osv):
     _description = 'teacher'
     _inherit = 'user.person'
     _columns = {
-    'contract': fields.integer('Numero dinscription', required=True)
+    'contract': fields.integer('Numero d\'inscription', required=True)
     }
 user_teacher()
 
@@ -59,10 +60,10 @@ class user_student(osv.osv):
     _description = 'student'
     _inherit = 'user.person'
     _columns = {
-    'inscription_number': fields.char('Numero dinscription', size=100, required=True),
-    'parent' : fields.many2one('user.parent', 'Parent/Chef de departements'),
+    'inscription_number': fields.char('Numero d\'inscription', size=100, required=True),
+    'parent' : fields.many2one('user.parent', 'Parent/Chef de départements'),
     'inscriptions' : fields.one2many('inscription.inscription', 'student', 'Inscriptions'),
-    'credits': fields.one2many('notes.credit', 'student', 'Credit'),
+    'credits': fields.one2many('notes.credit', 'student', 'Crédit'),
     'evaluation': fields.one2many('notes.evaluation', 'student', 'Evaluation'),
     }
 user_student()
