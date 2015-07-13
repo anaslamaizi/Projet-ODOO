@@ -5,7 +5,7 @@
         <menuitem name="Gestion d'nscription" id="inscription_parent_menu"/>
 
         <!-- Institute Management -->
-        <menuitem name="Gestion des universitie" parent="inscription_parent_menu" id="inscription_management_side_menu"/>
+        <menuitem name="Gestion des université" parent="inscription_parent_menu" id="inscription_management_side_menu"/>
 
         <!-- Establishment -->
         <record model="ir.ui.view" id="inscription_establishment_form_view">
@@ -22,7 +22,7 @@
                             <field name="address"/>
                         </group>
                         <notebook>
-                            <page string="Universitys">
+                            <page string="Universités">
                                 <field name="universitys" widget="one2many_list"/>
                             </page>
                         </notebook>
@@ -36,7 +36,7 @@
             <field name="model">inscription.establishment</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="Establishment List">
+                <tree string="Liste des établissements">
                     <field name="name"/>
                     <field name="universitys" widget="one2many"/>
                 </tree>
@@ -44,7 +44,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="action_inscription_establishment">
-            <field name="name">Gestion d'etablissement</field>
+            <field name="name">Gestion d'établissement</field>
             <field name="res_model">inscription.establishment</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -64,7 +64,7 @@
             <field name="act_window_id" ref="action_inscription_establishment"/>
         </record>
         
-        <menuitem name="Establishment" parent="inscription_management_side_menu" id="inscription_establishment_menu"
+        <menuitem name="Etablissements" parent="inscription_management_side_menu" id="inscription_establishment_menu"
                   action="action_inscription_establishment"/>
 
         <!-- University -->
@@ -73,7 +73,7 @@
             <field name="model">inscription.university</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="University Form" version="7.0">
+                <form string="Ajouter université" version="7.0">
                     <sheet>
                         <group>
                             <field name="logo" widget='image' class="oe_avatar oe_left"/>
@@ -85,7 +85,7 @@
                             <field name="establishment"/>
                         </group>
                         <notebook>
-                            <page string="Degrees">
+                            <page string="Diplômes">
                                 <field name="degrees" widget="one2many_list"/>
                             </page>
                         </notebook>
@@ -99,7 +99,7 @@
             <field name="model">inscription.university</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="University List">
+                <tree string="Liste des universités">
                     <field name="abbreviation"/>
                     <field name="name"/>
                     <field name="establishment"/>
@@ -110,7 +110,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="action_inscription_university">
-            <field name="name">Gestion des universites</field>
+            <field name="name">Gestion des universités</field>
             <field name="res_model">inscription.university</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -130,7 +130,7 @@
             <field name="act_window_id" ref="action_inscription_university"/>
         </record>
 
-        <menuitem name="Universite" parent="inscription_management_side_menu" id="inscription_university_menu"
+        <menuitem name="Universités" parent="inscription_management_side_menu" id="inscription_university_menu"
                   action="action_inscription_university"/>
 
         <!-- Degree -->
@@ -139,7 +139,7 @@
             <field name="model">inscription.degree</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <form string="Degree Form" version="7.0">
+                <form string="Ajouter diplôme" version="7.0">
                     <sheet>
                         <group>
                             <field name="name"/>
@@ -148,7 +148,7 @@
                             <field name="specialities" widget="one2many_list"/>
                         </group>
                         <notebook>
-                            <page string="Specialities">
+                            <page string="Spécialités">
                                 <field name="specialities" widget="one2many_list"/>
                             </page>
                         </notebook>
@@ -162,7 +162,7 @@
             <field name="model">inscription.degree</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="Degree List">
+                <tree string="Liste des diplômes">
                     <field name="name"/>
                     <field name="description"/>
                     <field name="university"/>
@@ -172,7 +172,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="action_inscription_degree">
-            <field name="name">Gestion de diplome</field>
+            <field name="name">Gestion de diplôme</field>
             <field name="res_model">inscription.degree</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -201,7 +201,7 @@
             <field name="model">inscription.speciality</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Speciality Form" version="7.0">
+                <form string="Ajouter spécialité" version="7.0">
                     <sheet>
                         <group>
                             <field name="name"/>
@@ -209,7 +209,7 @@
                             <field name="degree"/>
                         </group>
                         <notebook>
-                            <page string="Reformes">
+                            <page string="Réformes">
                                 <field name="reformes" widget="one2many_list"/>
                             </page>
                             <page string="Inscriptions">
@@ -226,7 +226,7 @@
             <field name="model">inscription.speciality</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="Speciality List">
+                <tree string="Liste des spécialités">
                     <field name="name"/>
                     <field name="description"/>
                     <field name="degree"/>
@@ -236,7 +236,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="action_inscription_speciality">
-         <field name="name">Speciality Management</field>
+         <field name="name">Gestion des spécialités</field>
             <field name="res_model">inscription.speciality</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -256,11 +256,11 @@
             <field name="act_window_id" ref="action_inscription_speciality"/>
         </record>
 
-        <menuitem name="Speciality" parent="inscription_management_side_menu" id="inscription_speciality_menu"
+        <menuitem name="Specialités" parent="inscription_management_side_menu" id="inscription_speciality_menu"
                   action="action_inscription_speciality"/>
 
         <!-- Institute Management -->
-        <menuitem name="Reforme Management" parent="inscription_parent_menu" id="inscription_reforme_side_menu"/>
+        <menuitem name="Gestion des réformes" parent="inscription_parent_menu" id="inscription_reforme_side_menu"/>
 
         <!-- Reforme -->
         <record model="ir.ui.view" id="inscription_reforme_form_view">
@@ -268,7 +268,7 @@
             <field name="model">inscription.reforme</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Reforme Form" version="7.0">
+                <form string="Ajouter réforme" version="7.0">
                     <sheet>
                         <group>
                             <field name="name"/>
@@ -292,7 +292,7 @@
             <field name="model">inscription.reforme</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="Reforme List">
+                <tree string="Liste des réformes">
                     <field name="name"/>
                     <field name="apply_date"/>
                     <field name="confirmation"/>
@@ -304,7 +304,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="action_inscription_reforme">
-            <field name="name">Gestion des Reparation/maintenance </field>
+            <field name="name">Gestion des réformes</field>
             <field name="res_model">inscription.reforme</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -324,7 +324,7 @@
             <field name="act_window_id" ref="action_inscription_reforme"/>
         </record>
 
-        <menuitem name="Reparation/maintenance" parent="inscription_reforme_side_menu" id="inscription_reforme_menu"
+        <menuitem name="Réformes" parent="inscription_reforme_side_menu" id="inscription_reforme_menu"
                   action="action_inscription_reforme"/>
 
         <!-- Module -->
@@ -344,13 +344,13 @@
                             <field name="conformity"/>
                         </group>
                         <notebook>
-                            <page string="Reformes">
+                            <page string="Réformes">
                                 <field name="reformes" widget="many2many_list"/>
                             </page>
-                            <page string="Teaching Units">
+                            <page string="Matières">
                                 <field name="teaching_units" widget="many2many_list"/>
                             </page>
-                            <page string="Credits">
+                            <page string="Crédits">
                                 <field name="credits" widget="many2many_list"/>
                             </page>
                         </notebook>
@@ -364,7 +364,7 @@
             <field name="model">inscription.module</field>
                 <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="Module List">
+                <tree string="Liste des modules">
                     <field name="id"/>
                     <field name="designation"/>
                     <field name="coefficient"/>
@@ -396,7 +396,7 @@
             <field name="act_window_id" ref="action_inscription_module"/>
         </record>
 
-        <menuitem name="Module" parent="inscription_reforme_side_menu" id="inscription_module_menu"
+        <menuitem name="Modules" parent="inscription_reforme_side_menu" id="inscription_module_menu"
                   action="action_inscription_module"/>
 
         <!-- Teaching Unit -->
@@ -405,7 +405,7 @@
             <field name="model">inscription.teaching_unit</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Teaching Unit Form" version="7.0">
+                <form string="Ajouter matière" version="7.0">
                     <sheet>
                         <group>
                             <field name="designation"/>
@@ -417,7 +417,7 @@
                             <page string="Modules">
                                 <field name="modules" widget="many2many_list"/>
                             </page>
-                            <page string="Exams">
+                            <page string="Examens">
                                 <field name="exams" widget="many2many_list"/>
                             </page>
                         </notebook>
@@ -431,7 +431,7 @@
             <field name="model">inscription.teaching_unit</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="Teaching Unit List">
+                <tree string="Liste des matières">
                     <field name="designation"/>
                     <field name="coefficient"/>
                     <field name="hours_number"/>
@@ -461,11 +461,11 @@
             <field name="act_window_id" ref="action_inscription_teaching_unit"/>
         </record>
 
-        <menuitem name="id profs" parent="inscription_reforme_side_menu" id="inscription_teaching_unit_menu"
+        <menuitem name="Gestion des profs" parent="inscription_reforme_side_menu" id="inscription_teaching_unit_menu"
                   action="action_inscription_teaching_unit"/>
 
         <!-- Inscription Management -->
-        <menuitem name="Gestion d'inscriptions" parent="inscription_parent_menu"
+        <menuitem name="Gestion des inscriptions" parent="inscription_parent_menu"
                   id="inscription_inscription_side_menu"/>
 
         <!-- Inscription -->
@@ -474,7 +474,7 @@
             <field name="model">inscription.inscription</field>
                 <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Inscription Form" version="7.0">
+                <form string="Ajouter inscription" version="7.0">
                     <group>
                         <field name="student"/>
                         <field name="speciality"/>
@@ -490,7 +490,7 @@
             <field name="model">inscription.inscription</field>
                 <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="Inscription List">
+                <tree string="Liste des inscriptions">
                     <field name="student"/>
                     <field name="speciality"/>
                     <field name="study_year"/>
@@ -500,7 +500,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="action_inscription_inscription">
-            <field name="name">Gestion d'inscription</field>
+            <field name="name">Gestion des inscriptions</field>
             <field name="res_model">inscription.inscription</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
